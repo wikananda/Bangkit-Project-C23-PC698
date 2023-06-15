@@ -1,0 +1,9 @@
+Flask
+gunicorn
+numpy >= 1.23.2
+tensorflow >= 2.10.0
+scikit-learn 
+matplotlib
+keras 
+opencv-python
+Pillow 

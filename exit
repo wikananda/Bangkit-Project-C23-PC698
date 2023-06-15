@@ -1,0 +1,47 @@
+* [33mcommit fe0e3fdb04bb33c113f3b330c68942c32f243993[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+[31m|[m Author: Komang Wikananda <nandasantana276@gmail.com>
+[31m|[m Date:   Thu Jun 15 19:23:44 2023 +0700
+[31m|[m 
+[31m|[m     Updated flask app, deleted dataset
+[31m|[m 
+* [33mcommit eaeb6ba3ce1847eb3a3eab3ba0f7227030f6a48b[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+[31m|[m Author: Komang Wikananda <nandasantana276@gmail.com>
+[31m|[m Date:   Wed Jun 14 12:29:02 2023 +0700
+[31m|[m 
+[31m|[m     Added flask app and dockerfile
+[31m|[m 
+* [33mcommit 8f1bdd8e10b1656bd5b99b103b4cf9e506fbe6db[m
+[31m|[m Author: Komang Wikananda <nandasantana276@gmail.com>
+[31m|[m Date:   Tue Jun 13 19:43:06 2023 +0700
+[31m|[m 
+[31m|[m     Added fashionswap main to infer model
+[31m|[m 
+* [33mcommit 04b4677d1f5133b57a0c210b8b87550e733fe8e3[m
+[31m|[m Author: inazaa <125671919+inazaa@users.noreply.github.com>
+[31m|[m Date:   Mon Jun 12 19:26:36 2023 +0700
+[31m|[m 
+[31m|[m     app.yaml
+[31m|[m 
+* [33mcommit dd0f7ed9753b3d5fe4c31ac2d234a7424bc13581[m
+[31m|[m Author: inazaa <125671919+inazaa@users.noreply.github.com>
+[31m|[m Date:   Mon Jun 12 19:21:37 2023 +0700
+[31m|[m 
+[31m|[m     Delete app.yaml
+[31m|[m 
+* [33mcommit 5ccf48c1151e969e0e0101fa17401fa7a077b451[m
+[31m|[m Author: inazaa <125671919+inazaa@users.noreply.github.com>
+[31m|[m Date:   Mon Jun 12 18:39:15 2023 +0700
+[31m|[m 
+[31m|[m     app.yaml
+[31m|[m 
+* [33mcommit 771183f1446982411f4e874c8cccb4a0f8504d38[m
+[31m|[m Author: Komang Wikananda <nandasantana276@gmail.com>
+[31m|[m Date:   Thu Jun 8 17:26:41 2023 +0700
+[31m|[m 
+[31m|[m     Reorganize, ML first commit
+[31m|[m 
+* [33mcommit d3b7b6859f6a17249c23796c54d2b8600791b6f3[m[33m ([m[1;31morigin/CloudComputing[m[33m)[m
+  Author: Nikita Ayu <nikitaayuwulandari@gmail.com>
+  Date:   Thu Jun 8 16:23:35 2023 +0700
+  
+      first commit

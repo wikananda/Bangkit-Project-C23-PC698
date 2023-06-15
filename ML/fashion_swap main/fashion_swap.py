@@ -56,7 +56,6 @@ def fashion_swap(model_image, cloth_image):
     print(gen_image.shape)
 
     output_image = upscale_to_original(gen_image, model_original_shape)
-    cv2.imwrite('output_image.jpg', output_image)
     return output_image
 
 app = Flask(__name__)
@@ -75,8 +74,10 @@ def index():
             cloth_image = Image.open(io.BytesIO(cloth_image)).convert('RGB')
 
             output_image = fashion_swap(model_image, cloth_image)
-            output_image = base64.b64encode(output_image).decode('utf-8')
+            print(type(output_image))
+            cv2.imwrite('output_image.jpg', output_image)
 
+            output_image = base64.b64encode(output_image).decode('utf-8')
             return jsonify({"output_image": output_image})
         except Exception as e:
             return jsonify({"error": str(e)})
