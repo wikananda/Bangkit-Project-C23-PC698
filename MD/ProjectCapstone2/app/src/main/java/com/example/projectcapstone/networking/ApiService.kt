@@ -29,9 +29,10 @@ interface ApiService {
         @Field("password") password: String
     ) : Call<LoginResponse>
 
+    //masih terdapat kendala saat implementasi model dibawah dan diakrenakan baru mendapatkan model h-2 pengumpulan jadi model belum bisa diakses secara maksimal
     @FormUrlEncoded
     @POST("https://flask-model-deployment-4mdnfdw5fa-et.a.run.app")
-    suspend fun generate(
+     fun generateImage(
         @Part cloth_file: MultipartBody.Part,
         @Part model_file: MultipartBody.Part
     ) : Call<TryonResponse>

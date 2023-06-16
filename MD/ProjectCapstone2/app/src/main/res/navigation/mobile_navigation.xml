@@ -15,11 +15,20 @@
         android:id="@+id/navigation_tryon"
         android:name="com.example.projectcapstone.ui.tryon.TryonFragment"
         android:label="@string/title_tryon"
-        tools:layout="@layout/fragment_tryon" />
+        tools:layout="@layout/fragment_tryon" >
+        <action
+            android:id="@+id/action_navigation_tryon_to_resultFragment"
+            app:destination="@id/resultFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_history"
         android:name="com.example.projectcapstone.ui.history.HistoryFragment"
         android:label="@string/title_history"
         tools:layout="@layout/fragment_history" />
+    <fragment
+        android:id="@+id/resultFragment"
+        android:name="com.example.projectcapstone.ui.ResultFragment"
+        android:label="fragment_result"
+        tools:layout="@layout/fragment_result" />
 </navigation>

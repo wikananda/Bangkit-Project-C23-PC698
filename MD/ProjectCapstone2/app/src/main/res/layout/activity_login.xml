@@ -34,7 +34,7 @@
         app:layout_constraintTop_toBottomOf="@id/img_login"
         app:layout_constraintVertical_chainStyle="packed" />
 
-    <EditText
+    <com.example.projectcapstone.ui.customview.EmailEditText
         android:id="@+id/ed_login_email"
         android:layout_width="0dp"
         android:layout_height="48dp"
@@ -51,7 +51,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView6" />
 
-    <EditText
+    <com.example.projectcapstone.ui.customview.PasswordEditText
         android:id="@+id/ed_login_password"
         android:layout_width="0dp"
         android:layout_height="48dp"

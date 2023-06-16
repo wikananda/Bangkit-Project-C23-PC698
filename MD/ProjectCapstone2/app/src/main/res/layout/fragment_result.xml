@@ -12,23 +12,37 @@
         android:layout_height="200dp"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="32dp"
-        android:src="@drawable/baseline_image_24"
+        android:layout_marginBottom="32dp"
+        android:src="@drawable/output_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
-        android:id="@+id/btnUsePicture"
-        android:layout_width="wrap_content"
+        android:id="@+id/btnSave"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:translationZ="0dp"
         android:text="Save Result"
         android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgResult" />
+
+    <Button
+        android:id="@+id/btnTryOn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="32dp"
+        android:layout_marginTop="16dp"
+        android:translationZ="0dp"
+        android:text="Take Another Picture"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnSave" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

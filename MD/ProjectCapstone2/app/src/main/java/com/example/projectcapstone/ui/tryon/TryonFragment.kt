@@ -23,15 +23,20 @@ import com.example.projectcapstone.byteArrayToFile
 import com.example.projectcapstone.databinding.FragmentTryonBinding
 import com.example.projectcapstone.fileToByteArray
 import com.example.projectcapstone.networking.ApiConfig
+import com.example.projectcapstone.reduceFileImage
 import com.example.projectcapstone.reduceFileImageFast
 import com.example.projectcapstone.response.TryonResponse
 import com.example.projectcapstone.rotateFileForCamera
 import com.example.projectcapstone.rotateFileForGallery
+import com.example.projectcapstone.ui.ResultFragment
 import com.example.projectcapstone.uriToFile
 import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 
 class TryonFragment : Fragment() {
@@ -145,6 +150,7 @@ class TryonFragment : Fragment() {
 
         _binding = FragmentTryonBinding.inflate(inflater, container, false)
         return binding?.root
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -162,7 +168,16 @@ class TryonFragment : Fragment() {
             }
         }
 
-        binding?.btnUsePicture?.setOnClickListener { uploadImage() }
+        binding?.btnUsePicture?.setOnClickListener {
+            uploadImage()
+            val resultFragment = ResultFragment()
+            val fragmenManager = parentFragmentManager
+            fragmenManager.beginTransaction().apply {
+                replace(R.id.resultFragment, resultFragment, ResultFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
+        }
         if(!allPermissionGranted()){
             requestPermission()
         }
@@ -234,35 +249,49 @@ class TryonFragment : Fragment() {
 
     private fun uploadImage() {
         if (file1 != null) {
-            val file = file1 as File
-            val requestImageFile = file.asRequestBody("image/jpeg".toMediaType())
+            val myFile1 = file1 as File
+            val compressedFile = reduceFileImage(myFile1)
+            val requestImageFile = compressedFile.asRequestBody("image/jpeg".toMediaTypeOrNull())
+
             val imageMultipart: MultipartBody.Part = MultipartBody.Part.createFormData(
                 "photo",
-                file.name,
+                myFile1.name,
                 requestImageFile
             )
-/*
-            val apiService = ApiConfig().getApiService()
-            val uploadImageRequest = apiService.uploadImage(imageMultipart1, imageMultipart2)
-            uploadImageRequest.enqueue(object : Callback<FileUploadResponse> {
-                override fun onResponse(
-                    call: Call<TryonResponse>,
-                    response: Response<FileUploadResponse>
-                ) {
-                    if (response.isSuccessful) {
-                        val responseBody = response.body()
-                        if (responseBody != null && !responseBody.error) {
-                            Toast.makeText(this@MainActivity, responseBody.message, Toast.LENGTH_SHORT).show()
+
+            if (file2 != null){
+                val myFile2 = file2 as File
+                val compressedFile2 = reduceFileImage(myFile2)
+                val requestImageFile2 = compressedFile2.asRequestBody("image/jpeg".toMediaTypeOrNull())
+
+                val imageMultipart2: MultipartBody.Part = MultipartBody.Part.createFormData(
+                    "photo",
+                    myFile1.name,
+                    requestImageFile2
+                )
+
+                val apiService = ApiConfig().getApiService()
+                val uploadImageRequest = apiService.generateImage(imageMultipart,imageMultipart2)
+                uploadImageRequest.enqueue(object : Callback<TryonResponse>{
+                    override fun onResponse(
+                        call: Call<TryonResponse>,
+                        response: Response<TryonResponse>
+                    ) {
+                        if (response.isSuccessful){
+                            val responseBody = response.body()
+                            if (responseBody != null){
+                                Toast.makeText(activity, "Berhasil Upload", Toast.LENGTH_SHORT).show()
+                            }
+                        } else {
+                            Toast.makeText(activity, "Response Body Null", Toast.LENGTH_SHORT).show()
                         }
-                    } else {
-                        Toast.makeText(this@MainActivity, response.message(), Toast.LENGTH_SHORT).show()
                     }
-                }
-                override fun onFailure(call: Call<TryonResponse>, t: Throwable) {
-                    Toast.makeText(this@MainActivity, t.message, Toast.LENGTH_SHORT).show()
-                }
-            })
-*/
+
+                    override fun onFailure(call: Call<TryonResponse>, t: Throwable) {
+                        Toast.makeText(activity, t.message, Toast.LENGTH_SHORT).show()
+                    }
+                })
+            }
         } else {
             Toast.makeText(activity, "Silakan masukkan berkas gambar terlebih dahulu.", Toast.LENGTH_SHORT).show()
         }
